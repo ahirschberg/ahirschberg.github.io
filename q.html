@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+	<script>
+		function set_localstorage () {
+			let x = document.querySelector('#storage_input');
+			console.log('data', x, x.value)
+			localStorage.setItem('data', x.value)
+			
+			get_data();
+		}
+		
+		function get_data() {
+		  let data = localStorage.getItem('data')
+		  console.log('data', data);
+		  document.querySelector('.output').innerText = data;
+		}
+		
+		if (localStorage.getItem('data') === null) {
+		  localStorage.setItem('data', Math.floor(Math.random() * 1e7));
+		}
+	</script>
+  </head>
+  <body>
+    <pre class="output"></pre>
+    <input type="text" id="storage_input"></input><button id="storage_submit" onclick="set_localstorage()">Put</button>
+	<script>
+	  get_data()
+	</script>
+  </body>
+</html>
